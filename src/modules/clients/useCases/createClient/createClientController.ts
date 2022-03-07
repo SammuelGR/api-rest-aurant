@@ -2,13 +2,16 @@ import { Request, Response } from "express";
 
 import { CreateClientUseCase } from "./CreateClientUseCase";
 
-interface IReqBody {
+interface ICreateBodyParams {
   username: string;
   password: string;
 }
 
 export class CreateClientController {
-  async create(req: Request<unknown, unknown, IReqBody>, res: Response) {
+  public async create(
+    req: Request<unknown, unknown, ICreateBodyParams>,
+    res: Response
+  ) {
     const { username, password } = req.body;
 
     const createClientUseCase = new CreateClientUseCase();
